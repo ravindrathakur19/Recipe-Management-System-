@@ -243,19 +243,15 @@ with left_col:
 
     # Delete recipe
     if selected_recipe_name:
-        if st.button("🗑️ Delete Selected Recipe"):
-            confirm = st.checkbox(
-                f"Confirm delete '{selected_recipe_name}'", key="confirm_delete"
-            )
-            if confirm:
-                st.session_state.recipes = [
-                    r for r in st.session_state.recipes
-                    if r["name"] != selected_recipe_name
-                ]
-                rebuild_tree()
-                save_recipes_to_file(st.session_state.recipes)
-                st.success("Recipe deleted.")
-                st.rerun()
+        if st.button(f"🗑️ Delete '{selected_recipe_name}'"):
+            st.session_state.recipes = [
+                r for r in st.session_state.recipes
+                if r["name"] != selected_recipe_name
+            ]
+            rebuild_tree()
+            save_recipes_to_file(st.session_state.recipes)
+            st.success("Recipe deleted.")
+            st.rerun()
 
     # Recently viewed
     if st.session_state.recently_viewed:
@@ -388,4 +384,5 @@ with right_col:
             st.markdown(f"**You:** {msg['user']}")
             st.markdown(f"**AI:** {msg['assistant']}")
             st.markdown("---")
+
 
