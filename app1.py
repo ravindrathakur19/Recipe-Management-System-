@@ -300,28 +300,32 @@ with right_col:
 
         with tab3:
             st.markdown("### Edit Recipe")
-
+        
             # Use a form for editing
             with st.form("edit_recipe_form"):
+        
                 edit_name = st.text_input(
                     "Recipe name",
                     value=selected_recipe["name"],
-                    key="edit_name",
+                    key=f"edit_name_{selected_recipe_name}",
                 )
+        
                 edit_ingredients_text = st.text_area(
                     "Ingredients (one per line)",
                     value="\n".join(selected_recipe["ingredients"]),
-                    key="edit_ingredients",
+                    key=f"edit_ingredients_{selected_recipe_name}",
                     height=150,
                 )
+        
                 edit_instructions_text = st.text_area(
                     "Instructions (one per line)",
                     value="\n".join(selected_recipe["instructions"]),
-                    key="edit_instructions",
+                    key=f"edit_instructions_{selected_recipe_name}",
                     height=200,
                 )
-
+        
                 save_edit = st.form_submit_button("Save changes")
+
 
                 if save_edit:
                     if not edit_name.strip():
@@ -384,5 +388,6 @@ with right_col:
             st.markdown(f"**You:** {msg['user']}")
             st.markdown(f"**AI:** {msg['assistant']}")
             st.markdown("---")
+
 
 
