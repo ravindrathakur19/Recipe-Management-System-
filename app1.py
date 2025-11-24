@@ -239,7 +239,7 @@ with left_col:
                     rebuild_tree()
                     save_recipes_to_file(st.session_state.recipes)
                     st.success("Recipe added successfully!")
-                    st.experimental_rerun()
+                    st.rerun()
 
     # Delete recipe
     if selected_recipe_name:
@@ -255,7 +255,7 @@ with left_col:
                 rebuild_tree()
                 save_recipes_to_file(st.session_state.recipes)
                 st.success("Recipe deleted.")
-                st.experimental_rerun()
+                st.rerun()
 
     # Recently viewed
     if st.session_state.recently_viewed:
@@ -362,7 +362,7 @@ with right_col:
                             rebuild_tree()
                             save_recipes_to_file(st.session_state.recipes)
                             st.success("Recipe updated successfully.")
-                            st.experimental_rerun()
+                            st.rerun()
     else:
         st.info("Select a recipe from the left, or add a new one.")
 
@@ -388,3 +388,4 @@ with right_col:
             st.markdown(f"**You:** {msg['user']}")
             st.markdown(f"**AI:** {msg['assistant']}")
             st.markdown("---")
+
